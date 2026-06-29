@@ -2,9 +2,9 @@
 
 # ◆ Oasis Tower RWA Pipeline
 
-**RAG-driven fractional real estate tokenization — research POC**
+**RAG-driven fractional real estate tokenization, research POC**
 
-A four-stage agent pipeline that turns a client offering brief into a cited compliance map, permissioned-token architecture outline, and governance manifest — with a human sign-off gate before anything ships.
+A four-stage agent pipeline that turns a client offering brief into a cited compliance map, permissioned-token architecture outline, and governance manifest with a human sign-off gate before anything ships.
 
 <br />
 
@@ -29,8 +29,8 @@ This project models how a regulated **RWA tokenization** intake might work in pr
 |---|---|
 | **Input** | Fictional client brief + offering memorandum corpus |
 | **Output** | JSON governance manifest with source citations |
-| **Default mode** | Fully offline — no API keys, no GPU |
-| **Optional live path** | Kimi-compatible model for stages 2–3 |
+| **Default mode** | Fully offline, no API keys, no GPU |
+| **Optional live path** | Kimi-compatible model for stages 2-3 |
 
 > All client names, asset figures, and corpus text are **fictional**. Compliance output is **review-required analysis**, not legal advice. No production Solidity is generated.
 
@@ -135,7 +135,7 @@ Then open **[http://localhost:8123](http://localhost:8123)**
 | Switch to **Custom RWA brief** | Parses your pasted text (tranche %, escrow, lock period) |
 | **Download governance manifest** | Exports full JSON from the demo |
 
-The browser engine mirrors the Python mock pipeline — works with no backend and no API key.
+The browser engine mirrors the Python mock pipeline and works with no backend and no API key.
 
 ---
 
@@ -209,7 +209,7 @@ ElChai_Assignment/
 | Pipeline | Python 3.11+, JSON briefs, deterministic mock + optional Kimi API |
 | RAG | Committed JSON corpus, keyword overlap retrieval (no vector DB) |
 | Local tier | Regex redaction; Qwen via Ollama optional |
-| Frontend | Vanilla HTML / CSS / JS — bilingual EN / AR |
+| Frontend | Vanilla HTML / CSS / JS, bilingual EN / AR |
 | Deploy | Static `web/` (Vercel-ready) · optional FastAPI backend |
 
 ---

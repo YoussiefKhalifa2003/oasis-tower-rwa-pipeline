@@ -39,7 +39,7 @@
 
     if (isOasis) return p;
 
-    p.valuation = "Valuation not stated in brief — escalate to client";
+    p.valuation = "Valuation not stated in brief - escalate to client";
 
     var cn = (brief.client_name || "").replace(/\(fictional\)/gi, "").trim();
     if (cn && cn.toLowerCase() !== "custom brief") p.asset_label = cn;
