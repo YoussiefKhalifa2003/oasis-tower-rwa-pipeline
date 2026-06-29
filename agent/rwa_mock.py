@@ -1,5 +1,3 @@
-"""RWA + RAG pipeline mock engine for Oasis Tower POC."""
-
 from __future__ import annotations
 
 from brief_parser import parse_brief

@@ -1,20 +1,3 @@
-"""Optional live backend for the Oasis Tower RWA landing-page demo.
-
-The landing page works fully offline via web/engine.js. This FastAPI service runs
-the real Python orchestrator on demand (mock or live Kimi).
-
-Run:
-    cd server
-    pip install -r requirements.txt
-    uvicorn app:app --reload --port 8000
-
-Endpoints:
-    GET /health
-    GET /run                          # Oasis Tower brief, mock mode
-    GET /run?live=true&redact=true    # live Kimi (needs KIMI_API_KEY)
-    POST /run  {"raw_request": "..."}  # custom brief JSON body fields
-"""
-
 from __future__ import annotations
 
 import json
@@ -22,7 +5,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 

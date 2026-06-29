@@ -1,22 +1,9 @@
-"""Thin wrapper around a Kimi-compatible model via Moonshot's OpenAI-compatible API.
-
-Kimi exposes an OpenAI-compatible endpoint, so we reuse the official `openai`
-client and only change the base URL and API key. See:
-https://platform.moonshot.ai
-
-Environment variables:
-    KIMI_API_KEY    Your Moonshot API key (required for live mode).
-    KIMI_BASE_URL   Defaults to https://api.moonshot.ai/v1
-    KIMI_MODEL      Defaults to kimi-k2.5  (set to a model your account can access)
-"""
-
 from __future__ import annotations
 
 import json
 import os
 import time
 from dataclasses import dataclass
-
 
 DEFAULT_BASE_URL = "https://api.moonshot.ai/v1"
 DEFAULT_MODEL = "kimi-k2.5"
@@ -30,15 +17,8 @@ class KimiResponse:
 
 
 class KimiClient:
-    """Calls Kimi and returns parsed JSON, with simple retries.
-
-    The agents in this project always ask the model for JSON, so this client
-    enforces JSON output and gives a clear error if the model returns junk.
-    """
-
     def __init__(self, api_key: str | None = None, base_url: str | None = None,
                  model: str | None = None):
-        # Imported lazily so the project still runs in mock mode with no deps.
         from openai import OpenAI
 
         self.api_key = api_key or os.environ.get("KIMI_API_KEY")
@@ -55,7 +35,6 @@ class KimiClient:
 
     def complete_json(self, system_prompt: str, user_content: str,
                       temperature: float = 0.3, max_retries: int = 3) -> dict:
-        """Send one system+user turn and parse the reply as JSON."""
         last_error: Exception | None = None
         for attempt in range(1, max_retries + 1):
             try:
@@ -72,7 +51,7 @@ class KimiClient:
                 return json.loads(raw)
             except json.JSONDecodeError as exc:
                 last_error = exc
-            except Exception as exc:  # network / rate-limit / transient
+            except Exception as exc:
                 last_error = exc
                 time.sleep(min(2 ** attempt, 8))
         raise RuntimeError(f"Kimi call failed after {max_retries} attempts: {last_error}")

@@ -1,10 +1,3 @@
-"""Minimal RAG retrieval for the Oasis Tower POC.
-
-No vector DB required: keyword overlap over committed JSON chunks keeps the
-demo reproducible offline. Live mode can swap in embeddings later; the interface
-stays the same.
-"""
-
 from __future__ import annotations
 
 import json
@@ -24,7 +17,6 @@ def _tokens(text: str) -> set[str]:
 
 
 def retrieve(query: str, corpus_file: str, top_k: int = 4) -> list[dict]:
-    """Return top_k chunks by simple token overlap score."""
     q = _tokens(query)
     if not q:
         return []

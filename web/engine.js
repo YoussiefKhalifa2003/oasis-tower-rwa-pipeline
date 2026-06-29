@@ -1,5 +1,3 @@
-// Oasis Tower RWA RAG engine - browser port of agent/rwa_mock.py + brief_parser.py
-
 (function () {
   "use strict";
 
@@ -238,5 +236,5 @@
     };
   }
 
-  window.CompassEngine = { run: run, parseBrief: parseBrief };
+  window.RwaEngine = { run: run, parseBrief: parseBrief };
 })();

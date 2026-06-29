@@ -1,5 +1,3 @@
-// Oasis Tower RWA pipeline - landing page controller.
-
 (function () {
   "use strict";
 
@@ -221,7 +219,7 @@
     runBtn.disabled = true;
     resetSteps();
 
-    var result = window.CompassEngine.run(brief);
+    var result = window.RwaEngine.run(brief);
     lastResult = result;
     demoMode.textContent = "mode: " + result.meta.mode;
     teleStatus.textContent = dict().status_running;

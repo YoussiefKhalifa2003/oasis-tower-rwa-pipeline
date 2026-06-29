@@ -1,21 +1,3 @@
-"""Oasis Tower RWA RAG pipeline - OpenClaw-style multi-agent POC.
-
-Pipeline (80% automated draft / 20% human control pattern):
-    1. SovereignGuard      - local tier: RAG ingest, PII strip, escalate if not in doc
-    2. JurisdictionMapper  - Kimi via OpenClaw routing: VARA/ADGM compliance mapping
-    3. ProtocolArchitect   - Kimi: ERC-3643 / ERC-1400 architecture outline (no Solidity)
-    --- OPENCLAW GOVERNANCE GATE ---
-    4. GovernanceManifest  - deterministic halt + JSON manifest for human sign-off
-
-Run modes:
-    Mock (default)  - offline, reproducible via rwa_mock.py + rag_store.py
-    Live (--live)   - configured Kimi-compatible model for stages 2-3
-
-Examples:
-    python orchestrator.py --brief sample_briefs/oasis_tower_rwa.json --yes
-    python orchestrator.py --brief sample_briefs/oasis_tower_rwa.json --live --redact --yes
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -120,8 +102,6 @@ def run_pipeline(brief: dict, live: bool, auto_approve: bool, redact: bool) -> d
             user_content = build_user_content(working_brief, results, key)
             output = client.complete_json(system_prompt, user_content)
         elif live and tier == "local":
-            # Keep sensitive ingest local in live mode too. Kimi is used only for
-            # the agentic reasoning stages after redaction/RAG.
             output = rwa_mock.run_stage(key, working_brief, results)
         else:
             output = rwa_mock.run_stage(key, working_brief, results)

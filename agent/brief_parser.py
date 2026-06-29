@@ -1,5 +1,3 @@
-"""Parse RWA brief text into structured fields for mock / browser engines."""
-
 from __future__ import annotations
 
 import re
