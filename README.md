@@ -243,7 +243,7 @@ This repository is a **research and demonstration POC** only.
 
 <div align="center">
 
-**Youssief Khalifa** · RIT · Al Ain, UAE
+**Youssief Khalifa** · Al Ain, UAE
 
 <br />
 
