@@ -15,7 +15,7 @@ A four-stage agent pipeline that turns a client offering brief into a cited comp
 
 <br />
 
-[Live demo](#-live-demo) · [Run CLI](#-quick-start) · [Pipeline](#-pipeline) · [Report (PDF)](#-documentation) · [Architecture](docs/architecture.md)
+[Live demo](#-live-demo) · [Run CLI](#-quick-start) · [Pipeline](#-pipeline) · [Report (PDF)](#-documentation)
 
 </div>
 
@@ -185,7 +185,6 @@ ElChai_Assignment/
 │   └── vercel.json
 │
 ├── openclaw/                       ← gateway config + skill (deployment path)
-├── docs/                           ← architecture & risk notes
 └── server/                         ← optional FastAPI wrapper
 ```
 
@@ -195,9 +194,7 @@ ElChai_Assignment/
 
 | Document | Description |
 |----------|-------------|
-| [**Detailed Report (PDF)**](Detailed%20Report_%20Oasis%20Tower%20RWA%20Pipeline.pdf) | Full written assessment with model matrix, risks, and recommendation |
-| [Architecture](docs/architecture.md) | Pipeline tiers, RAG layer, orchestration |
-| [Risks & recommendation](docs/risks-and-recommendation.md) | Limitations and suggested deployment pattern |
+| [**Detailed Report (PDF)**](Detailed%20Report_%20Oasis%20Tower%20RWA%20Pipeline.pdf) | Full written assessment: architecture, model matrix, risks, and recommendation |
 | [OpenClaw setup](openclaw/README.md) | Gateway config for Slack / Teams / WebChat routing |
 
 ---
