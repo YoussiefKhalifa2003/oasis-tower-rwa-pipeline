@@ -1,0 +1,31 @@
+{
+  "document_id": "OASIS-MEMO-2026-FICTIONAL",
+  "title": "Oasis Tower Fractional Real Estate Offering Memorandum (fictional)",
+  "chunks": [
+    {
+      "id": "memo-001",
+      "section": "Asset summary",
+      "text": "Oasis Tower is a Grade-A commercial tower in Dubai Internet City. Net lettable area is 412,000 sq ft. Valuation by independent appraiser (fictional): AED 890 million as of Q1 2026. First tokenized tranche targets 18% of economic interest in the SPV holding the asset."
+    },
+    {
+      "id": "memo-002",
+      "section": "Distribution policy",
+      "text": "Net rental income from occupied floors is distributed quarterly to token holders pro-rata, subject to a 5% maintenance reserve. Distribution dates: last business day of March, June, September, December. Developer contact for investor relations: investors@oasis-tower-demo.example (fictional)."
+    },
+    {
+      "id": "memo-003",
+      "section": "Investor eligibility",
+      "text": "Initial offering is limited to professional investors as defined in the offering memorandum addendum. Retail participation requires separate regulatory approval not covered in this document. KYC must be completed before wallet whitelisting."
+    },
+    {
+      "id": "memo-004",
+      "section": "Escrow and settlement",
+      "text": "Primary subscription funds are held in an escrow account with a UAE-licensed custodian until minimum subscription (AED 45M) is reached. If not reached by 30 September 2026, subscriptions are returned minus documented bank fees."
+    },
+    {
+      "id": "memo-005",
+      "section": "Technology",
+      "text": "Tokens represent economic interest in Oasis Tower SPV Ltd. Transfer restrictions apply for 12 months from issuance. Secondary transfers require compliance re-check and updated whitelist status."
+    }
+  ]
+}

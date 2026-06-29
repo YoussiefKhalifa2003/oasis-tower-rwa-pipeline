@@ -1,0 +1,157 @@
+{
+  "meta": {
+    "brief_id": "FIN-2026-002",
+    "client_name": "Cedar Pay (fictional)",
+    "generated_at": "2026-06-27T21:04:38",
+    "mode": "mock",
+    "model": "mock-engine",
+    "local_redaction": false,
+    "step_timings_seconds": {
+      "intake": 0.2,
+      "compliance": 0.2,
+      "architecture": 0.2,
+      "proposal": 0.2
+    }
+  },
+  "steps": {
+    "intake": {
+      "summary": "Cedar Pay (fictional) wants to deploy an AI assistant for customers plus an internal triage agent for the operations team, without giving customers wrong financial or regulatory information.",
+      "primary_goals": [
+        "Reduce repetitive customer support load",
+        "Answer customer questions accurately and safely",
+        "Help operations triage and summarize incoming tickets"
+      ],
+      "functional_requirements": [
+        "Answer customer questions in English and Arabic",
+        "Look up transaction status via internal API",
+        "Draft compliance-safe replies for agents",
+        "Summarize and triage incoming support tickets"
+      ],
+      "non_functional_requirements": [
+        "Must never invent fees, limits, or regulatory rules",
+        "Careful handling of sensitive customer data",
+        "Auditable and compliance-aware by design",
+        "Must connect to: Zendesk, Internal transactions REST API, PostgreSQL"
+      ],
+      "constraints": [
+        "Assistant must never invent fees, limits, or regulatory rules",
+        "Must support English and Arabic",
+        "Needs to plug into existing Zendesk and an internal transactions API",
+        "Sensitive customer data must be handled carefully"
+      ],
+      "open_questions": [
+        "What is the allowed scope of answers the assistant may give?",
+        "Which actions can the assistant take vs only draft for an agent?",
+        "What is the source of truth for fees, limits, and KYC status?",
+        "What data can leave the customer's region?"
+      ],
+      "primary_industry": "Fintech / Payments"
+    },
+    "compliance": {
+      "disclaimer": "These are review-required flags for a qualified human, not legal advice. Nothing here is a final compliance conclusion.",
+      "review_areas": [
+        {
+          "topic": "Accuracy of financial / regulatory answers",
+          "why_it_matters": "Wrong fee, limit, or KYC information given to a customer could create real harm and liability.",
+          "who_should_review": "Compliance officer and legal counsel",
+          "severity": "high"
+        },
+        {
+          "topic": "Customer data handling (KYC / transactions)",
+          "why_it_matters": "The assistant touches personal and transaction data across multiple countries.",
+          "who_should_review": "Data protection lead",
+          "severity": "high"
+        },
+        {
+          "topic": "Cross-border data flow (UAE / KSA / Egypt)",
+          "why_it_matters": "Each country may have its own rules on where customer data can be processed.",
+          "who_should_review": "Legal counsel per jurisdiction",
+          "severity": "medium"
+        }
+      ],
+      "data_handling_notes": [
+        "Define a strict list of topics the assistant may answer vs must escalate.",
+        "Log every automated reply for audit and quality review."
+      ]
+    },
+    "architecture": {
+      "recommended_services": [
+        {
+          "service": "AI assistants / Agentic AI",
+          "reason": "Customer-facing assistant plus internal triage agent."
+        },
+        {
+          "service": "RAG development",
+          "reason": "Ground answers in verified fees, limits, and policies so the model cannot invent them."
+        },
+        {
+          "service": "AI automation / RPA",
+          "reason": "Auto-summarize and route incoming tickets for the ops team."
+        },
+        {
+          "service": "AI integration",
+          "reason": "Connect to Zendesk and the internal transactions API."
+        }
+      ],
+      "proposed_architecture": [
+        "RAG knowledge base built only from approved policy and fee documents",
+        "Customer assistant that answers in English and Arabic, with strict escalation rules",
+        "Read-only transaction-status lookup via the internal API",
+        "Internal triage agent that summarizes and tags tickets in Zendesk",
+        "Human-in-the-loop: regulated or low-confidence questions are drafted, not auto-sent"
+      ],
+      "integrations": [
+        "Zendesk",
+        "Internal transactions REST API",
+        "PostgreSQL"
+      ],
+      "effort_and_risk_flags": [
+        {
+          "item": "Answer accuracy on money/regulation",
+          "impact": "high",
+          "note": "Must use grounding + confidence thresholds, never free-form generation."
+        },
+        {
+          "item": "Bilingual quality (Arabic)",
+          "impact": "medium",
+          "note": "Arabic responses need dedicated evaluation."
+        },
+        {
+          "item": "Transaction API access",
+          "impact": "medium",
+          "note": "Scope and secure exactly what the assistant can read."
+        }
+      ],
+      "phasing": [
+        "Phase 1: Grounded FAQ assistant (answers only, no actions) + internal triage",
+        "Phase 2: Transaction-status lookups with strict guardrails",
+        "Phase 3: Broader actions after accuracy is proven in production"
+      ]
+    },
+    "proposal": {
+      "title": "AI Support Assistant Discovery - Cedar Pay",
+      "executive_summary": "Cedar Pay wants an accurate, bilingual AI assistant for customers and an internal triage agent for operations, without ever giving wrong financial or regulatory information. Elchai recommends a grounded (RAG) approach with strict escalation and human review, starting with answer-only support before adding any actions.",
+      "scope_outline": [
+        "Discovery workshop and answer-scope definition",
+        "Grounded FAQ assistant (English + Arabic)",
+        "Internal ticket triage and summarization in Zendesk",
+        "Read-only transaction-status lookup with guardrails"
+      ],
+      "out_of_scope": [
+        "Free-form financial or legal advice",
+        "Money-moving actions in the first phase",
+        "Unsupervised auto-replies on regulated topics"
+      ],
+      "key_risks_to_raise": [
+        "Accuracy of financial / regulatory answers",
+        "Customer data handling (KYC / transactions)"
+      ],
+      "suggested_next_steps": [
+        "Book a discovery workshop",
+        "Agree the exact list of answerable vs escalate-only topics",
+        "Identify the source of truth for fees, limits, and KYC status"
+      ],
+      "human_review_note": "Verify all compliance flags and set pricing before sending to the client."
+    }
+  }
+}

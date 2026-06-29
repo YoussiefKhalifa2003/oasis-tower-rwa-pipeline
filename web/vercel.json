@@ -1,0 +1,5 @@
+{
+  "$comment": "Deploy: in Vercel, set the project Root Directory to 'web'. No build step is needed; this is a static site. cleanUrls serves index.html at the root.",
+  "cleanUrls": true,
+  "trailingSlash": false
+}

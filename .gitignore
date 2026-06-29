@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Secrets - never commit API keys
+.env
+*.key
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Node (only if a build setup is added later)
+node_modules/
+
+# Large media (commit a link instead, or use Git LFS)
+demo/*.mp4

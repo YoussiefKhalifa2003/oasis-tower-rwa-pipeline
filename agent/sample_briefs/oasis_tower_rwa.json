@@ -1,0 +1,19 @@
+{
+  "brief_id": "OASIS-RWA-2026",
+  "client_name": "Oasis Tower SPV (fictional)",
+  "project_title": "Oasis Tower Fractional Real Estate Tokenization Framework",
+  "industry": "Real Estate / RWA Tokenization",
+  "region": "Dubai, United Arab Emirates",
+  "submitted_by": "Asset Management, Oasis Tower SPV",
+  "raw_request": "We want to tokenize a first tranche of economic interest in Oasis Tower, a commercial tower in Dubai Internet City, for professional investors. We need a compliance-aware architecture: KYC-gated onboarding, quarterly rental income distribution, transfer restrictions, escrow until minimum subscription, and an auditable link between offering memorandum clauses and on-chain dividend logic. Prefer ERC-3643 or ERC-1400 style permissioned tokens. All regulatory conclusions must be reviewed by counsel.",
+  "stated_constraints": [
+    "Professional investors only in phase one",
+    "KYC before wallet whitelisting",
+    "Quarterly distributions with maintenance reserve",
+    "Escrow until AED 45M minimum subscription",
+    "12-month transfer restriction after issuance",
+    "No autonomous legal or regulatory conclusions"
+  ],
+  "budget_signal": "Enterprise RWA engagement",
+  "known_systems": ["Custodial wallet", "KYC provider", "Escrow bank account"]
+}

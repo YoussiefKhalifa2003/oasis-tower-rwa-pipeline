@@ -1,0 +1,2 @@
+# Only needed for live mode (--live). Mock mode runs on the standard library.
+openai>=1.40.0

@@ -1,0 +1,41 @@
+{
+  "$comment": "Example OpenClaw gateway config for Oasis Tower RWA Pipeline. Never commit a real API key. Copy to ~/.openclaw/openclaw.json and replace model names with models available to your account.",
+  "gateway": {
+    "name": "oasis-tower-rwa",
+    "security": "ask",
+    "ask": "on"
+  },
+  "models": {
+    "default": "kimi-k2.5",
+    "providers": {
+      "moonshot": {
+        "type": "openai-compatible",
+        "baseUrl": "https://api.moonshot.ai/v1",
+        "apiKey": "${KIMI_API_KEY}",
+        "models": ["kimi-k2.5"]
+      },
+      "local-qwen": {
+        "type": "openai-compatible",
+        "baseUrl": "http://localhost:11434/v1",
+        "apiKey": "ollama",
+        "models": ["qwen2.5:7b"]
+      }
+    }
+  },
+  "agents": {
+    "list": [
+      {
+        "name": "oasis-rwa",
+        "model": "kimi-k2.5",
+        "systemPromptFile": "./skills/oasis-tower-rwa-pipeline.md",
+        "tools": {
+          "elevated": { "allowFrom": [] }
+        }
+      }
+    ]
+  },
+  "channels": {
+    "$comment": "Route Slack / WhatsApp / Teams intake to oasis-rwa in production.",
+    "webchat": { "enabled": true }
+  }
+}

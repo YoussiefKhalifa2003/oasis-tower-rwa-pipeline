@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oasis Tower RWA Pipeline | Kimi + OpenClaw</title>
+  <meta name="description" content="RAG-driven RWA tokenization POC for Elchai Group: Oasis Tower fractional real estate with a Kimi-compatible agentic tier, local sovereign tier, and OpenClaw governance gate." />
+  <meta property="og:title" content="Oasis Tower RWA Pipeline | Kimi + OpenClaw" />
+  <meta property="og:description" content="RAG-driven fractional real estate tokenization POC with sovereign tier, compliance mapping, and OpenClaw governance gate." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="boot" id="boot">
+    <div class="boot-inner">
+      <div class="boot-mark">◆</div>
+      <pre class="boot-log" id="bootLog"></pre>
+    </div>
+  </div>
+
+  <div class="glow" id="glow"></div>
+  <div class="grain"></div>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">◆</span>
+        <span data-i18n="brand">Oasis&nbsp;RWA&nbsp;Pipeline</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#demo" data-i18n="nav_demo">Live demo</a>
+        <a href="#pipeline" data-i18n="nav_pipeline">Pipeline</a>
+        <a href="#models" data-i18n="nav_models">Model matrix</a>
+        <a href="#arch" data-i18n="nav_arch">Architecture</a>
+        <a href="#philosophy" data-i18n="nav_philosophy">Approach</a>
+        <button class="lang-toggle" id="langToggle" aria-label="Switch language">العربية</button>
+        <a class="nav-cta" href="#demo" data-i18n="nav_cta">Run pipeline</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Compact hero -->
+    <section class="hero hero-compact">
+      <div class="hero-copy">
+        <div class="pill" data-i18n="hero_pill">Elchai assessment · RWA tokenization deep dive</div>
+        <h1 data-i18n="hero_h1">Oasis Tower: a <em>RAG-driven</em> fractional real estate tokenization pipeline.</h1>
+        <p class="sub" data-i18n="hero_sub"></p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#demo" data-i18n="hero_cta1">Run the live demo</a>
+          <a class="btn btn-ghost" href="#models" data-i18n="hero_cta2">Compare models</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><b>4</b><small data-i18n="stat_stages">RAG pipeline stages</small></div>
+          <div class="stat"><b>20%</b><small data-i18n="stat_gate">human control gate</small></div>
+          <div class="stat"><b>2</b><small data-i18n="stat_tiers">model tiers</small></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hv-head"><span class="hv-dot"></span><span class="hv-dot"></span><span class="hv-dot"></span><span class="hv-title">oasis-tower-rwa · openclaw</span></div>
+        <div class="pipe">
+          <div class="pipe-node" data-step="1"><span class="dot"></span><div><b>SovereignGuard</b><small data-i18n="pipe1">Local RAG + PII strip</small></div></div>
+          <div class="pipe-line"></div>
+          <div class="pipe-node" data-step="2"><span class="dot"></span><div><b>JurisdictionMapper</b><small data-i18n="pipe2">VARA / ADGM mapping</small></div></div>
+          <div class="pipe-line"></div>
+          <div class="pipe-node" data-step="3"><span class="dot"></span><div><b>ProtocolArchitect</b><small data-i18n="pipe3">ERC-3643 outline</small></div></div>
+          <div class="pipe-line gate"></div>
+          <div class="pipe-node gate-node" data-step="gate"><span class="dot"></span><div><b data-i18n="pipe_gate">OpenClaw gate</b><small data-i18n="pipe_gate_s">Human sign-off</small></div></div>
+          <div class="pipe-line"></div>
+          <div class="pipe-node" data-step="4"><span class="dot"></span><div><b>GovernanceManifest</b><small data-i18n="pipe4">JSON manifest</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMO FIRST -->
+    <section class="demo demo-priority" id="demo">
+      <div class="demo-head">
+        <h2 class="section-title" data-i18n="demo_h">Live demo: Oasis Tower offering memorandum</h2>
+        <p data-i18n="demo_p"></p>
+      </div>
+
+      <div class="demo-controls">
+        <div class="chip-row" id="chipRow">
+          <button class="chip active" data-brief="oasis" data-i18n="chip_oasis">Oasis Tower (default)</button>
+          <button class="chip" data-brief="custom" data-i18n="chip_custom">Custom RWA brief</button>
+        </div>
+      </div>
+
+      <div class="byob" id="byob">
+        <label class="byob-label" data-i18n="byob_label">Client request (fictional offering brief):</label>
+        <textarea id="briefInput" rows="4"></textarea>
+        <div class="byob-row">
+          <input id="clientName" type="text" data-i18n-ph="byob_client" placeholder="Client name (optional)" />
+          <button class="btn btn-primary" id="runBtn" data-i18n="run_btn">Run RWA pipeline</button>
+        </div>
+      </div>
+
+      <div class="telemetry" id="telemetry">
+        <div class="tele"><span class="tele-k" data-i18n="tele_status">Status</span><span class="tele-v" id="teleStatus">idle</span></div>
+        <div class="tele"><span class="tele-k" data-i18n="tele_step">Step</span><span class="tele-v" id="teleStep">-</span></div>
+        <div class="tele"><span class="tele-k" data-i18n="tele_tokens">Tokens</span><span class="tele-v" id="teleTokens">0</span></div>
+        <div class="tele"><span class="tele-k" data-i18n="tele_cost">Est. cost</span><span class="tele-v" id="teleCost">$0.0000</span></div>
+        <div class="tele"><span class="tele-k" data-i18n="tele_latency">Latency</span><span class="tele-v" id="teleLatency">0 ms</span></div>
+      </div>
+
+      <div class="demo-stage">
+        <ol class="stage-steps" id="stageSteps">
+          <li data-key="sovereign_guard"><span class="s-dot"></span> SovereignGuard</li>
+          <li data-key="jurisdiction_map"><span class="s-dot"></span> JurisdictionMapper</li>
+          <li data-key="protocol_outline"><span class="s-dot"></span> ProtocolArchitect</li>
+          <li data-key="gate" class="gate"><span class="s-dot"></span> <span data-i18n="step_gate">OpenClaw gate</span></li>
+          <li data-key="governance_manifest"><span class="s-dot"></span> GovernanceManifest</li>
+        </ol>
+        <div class="stage-output" id="stageOutput">
+          <p class="stage-empty" data-i18n="stage_empty">Press <b>Run RWA pipeline</b> to watch the four stages plus governance gate.</p>
+        </div>
+      </div>
+
+      <div class="demo-foot" id="demoFoot" hidden>
+        <button class="btn btn-ghost" id="downloadBtn" data-i18n="download_btn">Download governance manifest (JSON)</button>
+        <span class="demo-mode" id="demoMode"></span>
+      </div>
+    </section>
+
+    <!-- PIPELINE STAGES -->
+    <section class="pipeline-section" id="pipeline">
+      <h2 class="section-title" data-i18n="pipeline_h">Four-stage OpenClaw pipeline (80/20 control pattern)</h2>
+      <p class="section-lead" data-i18n="pipeline_lead"></p>
+      <div class="stage-grid">
+        <article class="stage-card local-tier">
+          <span class="stage-num">01</span>
+          <h3 data-i18n="stage1_h">Sovereign Guard</h3>
+          <p class="stage-model">Local RAG · Qwen/Ollama-ready</p>
+          <p data-i18n="stage1_p"></p>
+        </article>
+        <article class="stage-card">
+          <span class="stage-num">02</span>
+          <h3 data-i18n="stage2_h">Jurisdiction Mapper</h3>
+          <p class="stage-model">Kimi-compatible · OpenClaw routing</p>
+          <p data-i18n="stage2_p"></p>
+        </article>
+        <article class="stage-card">
+          <span class="stage-num">03</span>
+          <h3 data-i18n="stage3_h">Protocol Architect</h3>
+          <p class="stage-model">Kimi-compatible · OpenClaw routing</p>
+          <p data-i18n="stage3_p"></p>
+        </article>
+        <article class="stage-card gate-tier">
+          <span class="stage-num">04</span>
+          <h3 data-i18n="stage4_h">Governance Gate</h3>
+          <p class="stage-model">Deterministic Python · OpenClaw halt</p>
+          <p data-i18n="stage4_p"></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- MODEL COMPARISON MATRIX -->
+    <section class="models-section" id="models">
+      <h2 class="section-title" data-i18n="matrix_h">Open-source model evaluation matrix (GCC enterprise context)</h2>
+      <p class="section-lead" data-i18n="matrix_lead"></p>
+      <div class="matrix-wrap">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th data-i18n="m_col_model">Model / Framework</th>
+              <th data-i18n="m_col_arch">Architecture</th>
+              <th data-i18n="m_col_local">Local deployment?</th>
+              <th data-i18n="m_col_cost">API cost / 1M tokens</th>
+              <th data-i18n="m_col_use">Strongest agentic use case for Elchai</th>
+              <th data-i18n="m_col_risk">Strategic risk / limitation</th>
+            </tr>
+          </thead>
+          <tbody id="matrixBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CONTEXT -->
+    <section class="two-col" id="context">
+      <div class="card problem">
+        <h2 data-i18n="problem_h">What Elchai publicly sells</h2>
+        <p data-i18n="problem_p"></p>
+        <p class="problem-src" data-i18n="problem_src"></p>
+      </div>
+      <div class="card solution">
+        <h2 data-i18n="solution_h">What this POC demonstrates</h2>
+        <p data-i18n="solution_p"></p>
+      </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="benefits" id="benefits">
+      <h2 class="section-title" data-i18n="benefits_h">Three practical benefits</h2>
+      <p class="section-lead" data-i18n="benefits_lead"></p>
+      <div class="benefit-grid">
+        <article class="benefit">
+          <div class="benefit-num">01</div>
+          <h3 data-i18n="benefit1_h">Grounded discovery</h3>
+          <p data-i18n="benefit1_p"></p>
+        </article>
+        <article class="benefit">
+          <div class="benefit-num">02</div>
+          <h3 data-i18n="benefit2_h">Privacy-first routing</h3>
+          <p data-i18n="benefit2_p"></p>
+        </article>
+        <article class="benefit">
+          <div class="benefit-num">03</div>
+          <h3 data-i18n="benefit3_h">Audit-ready handoff</h3>
+          <p data-i18n="benefit3_p"></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="arch" id="arch">
+      <h2 class="section-title" data-i18n="arch_h">Architecture: sovereign tier, agentic tier, governance gate</h2>
+      <div class="arch-flow">
+        <div class="flow-col"><div class="flow-node in" data-i18n="flow_memo">Offering memo (RAG corpus)</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-col">
+          <div class="flow-node local">
+            <span class="flow-tag" data-i18n="flow_sovereign">Sovereign tier</span>
+            <b>Local RAG · Qwen-ready</b>
+            <small data-i18n="flow_local_s"></small>
+          </div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-col">
+          <div class="flow-node gateway">
+            <span class="flow-tag" data-i18n="flow_orch">OpenClaw gateway</span>
+            <b>Python POC + config</b>
+            <small data-i18n="flow_gateway_s"></small>
+          </div>
+          <div class="flow-node external">
+            <span class="flow-tag" data-i18n="flow_agentic">Agentic tier</span>
+            <b>Kimi-compatible model</b>
+            <small data-i18n="flow_external_s"></small>
+          </div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-col">
+          <div class="flow-node human" data-i18n="flow_human">OpenClaw 20% gate</div>
+          <div class="flow-node out" data-i18n="flow_pack">Governance manifest</div>
+        </div>
+      </div>
+      <p class="arch-note" data-i18n="arch_note"></p>
+    </section>
+
+    <!-- PHILOSOPHY -->
+    <section class="philosophy" id="philosophy">
+      <h2 class="section-title" data-i18n="phil_h">Architectural philosophy (constraint-driven design)</h2>
+      <div class="philosophy-inner">
+        <p data-i18n="phil_p"></p>
+        <ul>
+          <li data-i18n="phil_l1"></li>
+          <li data-i18n="phil_l2"></li>
+          <li data-i18n="phil_l3"></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RISKS -->
+    <section class="risks" id="risks">
+      <h2 class="section-title" data-i18n="risks_h">Risks, limitations &amp; recommendation</h2>
+      <div class="risks-layout">
+        <table class="risk-table">
+          <thead><tr><th data-i18n="risk_col1">Risk</th><th data-i18n="risk_col2">How this POC handles it</th></tr></thead>
+          <tbody id="riskBody"></tbody>
+        </table>
+        <aside class="reco">
+          <div class="reco-badge" data-i18n="reco_badge">Final recommendation</div>
+          <h3 data-i18n="reco_h">Test internally, with guardrails.</h3>
+          <p data-i18n="reco_p"></p>
+          <ul>
+            <li data-i18n="reco_l1"></li>
+            <li data-i18n="reco_l2"></li>
+            <li data-i18n="reco_l3"></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="brand"><span class="brand-mark">◆</span> Oasis RWA Pipeline</div>
+        <p class="footer-note" data-i18n="footer_note"></p>
+      </div>
+      <div class="footer-links">
+        <a href="#demo" data-i18n="footer_demo">Demo</a>
+        <a href="#benefits" data-i18n="footer_benefits">Benefits</a>
+        <a href="#models" data-i18n="footer_models">Model matrix</a>
+        <a href="#risks" data-i18n="footer_risks">Risks</a>
+      </div>
+      <div class="footer-by">
+        <span>Youssief Khalifa</span>
+        <small>Al Ain, UAE · June 2026</small>
+      </div>
+    </div>
+  </footer>
+
+  <script src="engine.js"></script>
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

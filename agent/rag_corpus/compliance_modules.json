@@ -1,0 +1,32 @@
+{
+  "document_id": "GCC-COMPLIANCE-REF-FICTIONAL",
+  "title": "Reference compliance modules for demo only (not legal advice)",
+  "disclaimer": "Synthetic snippets for RAG retrieval in this POC. Always verify with qualified UAE counsel.",
+  "chunks": [
+    {
+      "id": "vara-001",
+      "jurisdiction": "UAE / VARA (reference)",
+      "text": "Virtual asset activities involving issuance or facilitation of tokens may require alignment with applicable UAE virtual asset regulatory frameworks. Token classification (utility vs security-like) affects licensing path. This POC does not determine classification."
+    },
+    {
+      "id": "vara-002",
+      "jurisdiction": "UAE / VARA (reference)",
+      "text": "Marketing of virtual assets to UAE persons may trigger disclosure, fit-and-proper, and custody requirements depending on activity type. Human legal review is required before any client-facing materials."
+    },
+    {
+      "id": "adgm-001",
+      "jurisdiction": "ADGM (reference)",
+      "text": "ADGM frameworks for digital securities and tokenized assets emphasize clear investor disclosure, custody arrangements, and transfer restriction enforcement on-chain or via regulated intermediaries."
+    },
+    {
+      "id": "pdpl-001",
+      "jurisdiction": "UAE PDPL (reference)",
+      "text": "Personal data of investors (KYC documents, contact details) should be processed with defined residency, retention, and access controls. Prefer on-prem redaction before sending text to external model APIs."
+    },
+    {
+      "id": "erc-001",
+      "jurisdiction": "Technical standard (reference)",
+      "text": "ERC-3643 (T-REX) and ERC-1400 family standards support permissioned security tokens with transfer rules, document management, and compliance hooks. Implementation requires audited smart contracts."
+    }
+  ]
+}

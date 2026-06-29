@@ -1,0 +1,16 @@
+{
+  "brief_id": "FIN-2026-002",
+  "client_name": "Cedar Pay (fictional)",
+  "industry": "Fintech / Payments",
+  "region": "GCC (UAE + Saudi Arabia)",
+  "submitted_by": "Co-founder & COO, Cedar Pay",
+  "raw_request": "We run a cross-border payments app for SMEs sending money between the UAE, Saudi Arabia, and Egypt. Support tickets are exploding and our agents waste hours answering the same questions about transfer limits, fees, and KYC status. We want an AI assistant that can answer customer questions, look up a transaction status, and draft compliance-safe replies, plus an internal agent that helps our operations team summarize and triage incoming tickets. We care a lot about not giving wrong financial or regulatory information to customers.",
+  "stated_constraints": [
+    "Assistant must never invent fees, limits, or regulatory rules",
+    "Must support English and Arabic",
+    "Needs to plug into existing Zendesk and an internal transactions API",
+    "Sensitive customer data must be handled carefully"
+  ],
+  "budget_signal": "Funded startup; cost-sensitive, prefers predictable monthly spend",
+  "known_systems": ["Zendesk", "Internal transactions REST API", "PostgreSQL"]
+}

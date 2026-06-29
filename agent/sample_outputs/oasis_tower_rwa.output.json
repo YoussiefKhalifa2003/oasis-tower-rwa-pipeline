@@ -1,0 +1,242 @@
+{
+  "meta": {
+    "brief_id": "OASIS-RWA-2026",
+    "project_title": "Oasis Tower Fractional Real Estate Tokenization Framework",
+    "client_name": "Oasis Tower SPV (fictional)",
+    "generated_at": "2026-06-29T12:24:49",
+    "mode": "mock-rag-pipeline",
+    "model": "rwa-mock-engine",
+    "local_redaction": true,
+    "pipeline": "oasis-tower-rwa-rag",
+    "step_timings_seconds": {
+      "sovereign_guard": 0.25,
+      "jurisdiction_map": 0.25,
+      "protocol_outline": 0.25,
+      "governance_manifest": 0.0
+    }
+  },
+  "steps": {
+    "sovereign_guard": {
+      "redacted_fields": [
+        "investor_relations_email"
+      ],
+      "extracted_asset_facts": [
+        {
+          "fact": "Oasis Tower, Dubai Internet City, AED 890M valuation (fictional)",
+          "source_chunk": "memo-001"
+        },
+        {
+          "fact": "First tranche: 18% economic interest in SPV",
+          "source_chunk": "memo-001"
+        }
+      ],
+      "distribution_rules": [
+        {
+          "rule": "Quarterly distribution, last business day of Mar/Jun/Sep/Dec",
+          "source_chunk": "memo-002"
+        },
+        {
+          "rule": "5% maintenance reserve before distribution",
+          "source_chunk": "memo-002"
+        }
+      ],
+      "escalation_items": [
+        {
+          "question": "Is retail investor participation allowed in phase one?",
+          "reason": "Brief targets professional/qualified investors; retail path not defined"
+        },
+        {
+          "question": "Final VARA licensing path for this token class?",
+          "reason": "Not defined in submitted brief or memo corpus"
+        }
+      ],
+      "rag_chunks_used": [
+        "memo-001",
+        "memo-005",
+        "memo-003",
+        "memo-002",
+        "memo-004"
+      ],
+      "local_tier_note": "Processed on-prem by the local sovereign tier (Qwen/Ollama-ready) before any external API call",
+      "citations": [
+        {
+          "id": "memo-001",
+          "section": "Asset summary",
+          "excerpt": "Oasis Tower is a Grade-A commercial tower in Dubai Internet City. Net lettable area is 412,000 sq ft. Valuation by independent appraiser (fictional): AED 890 million as of Q1 2026. First tokenized tranche targets 18% of "
+        },
+        {
+          "id": "memo-005",
+          "section": "Technology",
+          "excerpt": "Tokens represent economic interest in Oasis Tower SPV Ltd. Transfer restrictions apply for 12 months from issuance. Secondary transfers require compliance re-check and updated whitelist status."
+        },
+        {
+          "id": "memo-003",
+          "section": "Investor eligibility",
+          "excerpt": "Initial offering is limited to professional investors as defined in the offering memorandum addendum. Retail participation requires separate regulatory approval not covered in this document. KYC must be completed before "
+        },
+        {
+          "id": "memo-002",
+          "section": "Distribution policy",
+          "excerpt": "Net rental income from occupied floors is distributed quarterly to token holders pro-rata, subject to a 5% maintenance reserve. Distribution dates: last business day of March, June, September, December. Developer contact"
+        },
+        {
+          "id": "memo-004",
+          "section": "Escrow and settlement",
+          "excerpt": "Primary subscription funds are held in an escrow account with a UAE-licensed custodian until minimum subscription (AED 45M) is reached. If not reached by 30 September 2026, subscriptions are returned minus documented ban"
+        }
+      ]
+    },
+    "jurisdiction_map": {
+      "disclaimer": "Review-required flags only, not legal advice.",
+      "jurisdiction_focus": [
+        "UAE",
+        "Dubai"
+      ],
+      "mapped_requirements": [
+        {
+          "topic": "Virtual asset / token classification",
+          "linked_asset_fact": "Fractional interest in Oasis Tower, Dubai Internet City",
+          "source_chunk": "vara-001",
+          "severity": "high"
+        },
+        {
+          "topic": "Marketing and disclosure to UAE investors",
+          "linked_asset_fact": "Professional investor tranche (18%)",
+          "source_chunk": "vara-002",
+          "severity": "high"
+        },
+        {
+          "topic": "Permissioned transfer and custody",
+          "linked_asset_fact": "12-month transfer restriction",
+          "source_chunk": "adgm-001",
+          "severity": "medium"
+        },
+        {
+          "topic": "Investor KYC data residency",
+          "linked_asset_fact": "KYC before whitelisting",
+          "source_chunk": "pdpl-001",
+          "severity": "high"
+        }
+      ],
+      "fractional_distribution_flags": [
+        "Quarterly distribution logic must match brief (5% reserve); counsel to confirm tax withholding"
+      ],
+      "escrow_timeline_flags": [
+        "Escrow release tied to AED 45M minimum per client-brief"
+      ],
+      "data_residency_notes": [
+        "Run KYC document text through local tier before external LLM calls (pdpl-001)"
+      ],
+      "citations": [
+        {
+          "id": "erc-001",
+          "section": "Technical standard (reference)",
+          "excerpt": "ERC-3643 (T-REX) and ERC-1400 family standards support permissioned security tokens with transfer rules, document management, and compliance hooks. Implementation requires audited smart contracts."
+        },
+        {
+          "id": "pdpl-001",
+          "section": "UAE PDPL (reference)",
+          "excerpt": "Personal data of investors (KYC documents, contact details) should be processed with defined residency, retention, and access controls. Prefer on-prem redaction before sending text to external model APIs."
+        },
+        {
+          "id": "adgm-001",
+          "section": "ADGM (reference)",
+          "excerpt": "ADGM frameworks for digital securities and tokenized assets emphasize clear investor disclosure, custody arrangements, and transfer restriction enforcement on-chain or via regulated intermediaries."
+        },
+        {
+          "id": "vara-001",
+          "section": "UAE / VARA (reference)",
+          "excerpt": "Virtual asset activities involving issuance or facilitation of tokens may require alignment with applicable UAE virtual asset regulatory frameworks. Token classification (utility vs security-like) affects licensing path."
+        }
+      ]
+    },
+    "protocol_outline": {
+      "token_standard": "ERC-3643 (T-REX) style permissioned token (outline only)",
+      "contract_modules": [
+        {
+          "module": "IdentityRegistry + whitelist",
+          "purpose": "KYC-gated wallet onboarding",
+          "source_chunk": "memo-001"
+        },
+        {
+          "module": "ComplianceModule",
+          "purpose": "Enforce 12-month transfer restrictions",
+          "source_chunk": "memo-005"
+        },
+        {
+          "module": "DividendDistribution",
+          "purpose": "Quarterly pro-rata distributions with 5% reserve",
+          "source_chunk": "memo-002"
+        },
+        {
+          "module": "EscrowController",
+          "purpose": "Hold subscriptions until AED 45M minimum raise",
+          "source_chunk": "memo-004"
+        }
+      ],
+      "distribution_logic_outline": [
+        "Read net rental income feed (off-chain oracle with audit trail)",
+        "Apply 5% maintenance reserve per client brief",
+        "Pro-rata payout to whitelisted holders on quarterly schedule"
+      ],
+      "transfer_restriction_outline": [
+        "12-month lock from issuance",
+        "Re-run compliance check on secondary transfers"
+      ],
+      "integration_points": [
+        "Custodial wallet",
+        "KYC provider",
+        "Escrow bank account"
+      ],
+      "audit_requirements": [
+        "Third-party smart contract audit before mainnet",
+        "Formal verification of transfer rules recommended (erc-001)"
+      ],
+      "elchai_services_mapped": [
+        {
+          "service": "Real World Asset (RWA) tokenization",
+          "reason": "Core offering for Oasis Tower, Dubai Internet City"
+        },
+        {
+          "service": "Smart contract development (with audits)",
+          "reason": "Permissioned token and distribution logic"
+        },
+        {
+          "service": "Custodial wallet development",
+          "reason": "Professional investor onboarding"
+        },
+        {
+          "service": "Enterprise app development",
+          "reason": "Investor portal and reporting"
+        },
+        {
+          "service": "RAG development",
+          "reason": "Ground agent answers in offering memo and policy docs"
+        }
+      ]
+    },
+    "governance_manifest": {
+      "project": "Oasis Tower Fractional Real Estate Tokenization Framework",
+      "openclaw_gate_status": "HALTED",
+      "message": "[OpenClaw Gate: Awaiting authorized human sign-off before staging protocol generation]",
+      "human_control_ratio": "20% human review / 80% automated draft (enterprise control pattern)",
+      "manifest_summary": {
+        "asset_facts": 2,
+        "compliance_flags": 4,
+        "contract_modules": 4,
+        "escalations": 2
+      },
+      "high_severity_review": [
+        "Virtual asset / token classification",
+        "Marketing and disclosure to UAE investors",
+        "Investor KYC data residency"
+      ],
+      "next_steps": [
+        "Legal counsel reviews jurisdiction_map output",
+        "Engineering estimates audit timeline for protocol_outline",
+        "No Solidity deployment until signed manifest"
+      ],
+      "disclaimer": "Demo manifest only. Not for production or client use."
+    }
+  }
+}
